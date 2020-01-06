@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, viewport-fit=cover" />
+
+	<title>SAP Hybrid Mobile App</title>
+
+	<script id="sap-ui-bootstrap"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-preload="async"
+		data-sap-ui-xx-bindingSyntax="complex"
+		data-sap-ui-resourceroots='{ "com.acc.academia": "./" }'>
+	</script>
+
+	<script>
+	// The viewport meta tag must be inserted to the DOM before the "DOMContentLoaded" event is published.
+	// The initMobile function is responsible to insert the correct viewport according to the current device.
+	// For iPhone running iOS 7.1 and above a "minimal-ui" property is added to the viewport meta tag,
+	// which allows minimizing the top and bottom bars of the browser.
+	jQuery.sap.initMobile({ preventScroll : false });
+	</script>
+
+	<!-- initialize bootstrap -->
+	<script type="text/javascript" src="hybrid/sap-mobile-hybrid.js"></script>
+	<script type="text/javascript" src="hybrid/logon.js"></script>
+	
+	<!-- app configuration info files -->
+	<script type="text/javascript" src="appConfig.js"></script>
+	<script type="text/javascript" src="appRoutes.js"></script>
+	
+	<script type="text/javascript" src="cordova.js" onload="sap.hybrid.setCordova();"></script>
+
+	<script type="text/javascript">
+	(function() {
+		var remoteBase = fiori_client_appConfig.fioriURL;	// not use fioriclient plugin but borrow some of its configuration format
+		if (remoteBase.charAt(remoteBase.length - 1) === '/') {
+			remoteBase = remoteBase.substring(0, remoteBase.length - 1);	// remove trailing slash
+			fiori_client_appConfig.fioriURL = remoteBase;
+		}
+		
+		// detect image load errors and see if due to an attempt to load from a local file system location
+		window.addEventListener("error", function(e) {
+			if (e && e.target && e.target.nodeName && e.target.nodeName.toLowerCase() == "img") {
+				var root = (new RegExp(/^.*\//)).exec(window.location.href)[0], src = e.target.src;
+				// redirect the request to Mobile Services
+				if (src.indexOf(root) === 0) {
+					e.target.src = remoteBase + "/" + src.substring(root.length);
+				} else if (src.indexOf("file://") === 0) {
+					e.target.src = remoteBase + "/" + src.substring("file://".length);
+				}
+			}
+		}, true);
+		
+		// ensure XMLHttpRequests adjust URLs properly to work in packaged context
+		var originalOpen = window.XMLHttpRequest.prototype.open;
+
+		window.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+			if (fiori_client_appConfig && mobile_appRoutes && url 
+				&& url.indexOf("resources/") !== 0 && url.indexOf("./") !== 0) {	// skip local files
+				// match a local access URL to a path of application data routes
+				var route = null;
+				for (var i = 0; i < mobile_appRoutes.length; i++) {
+					if (url.indexOf(mobile_appRoutes[i].path) === 0 || ("/" + url).indexOf(mobile_appRoutes[i].path) === 0 ) {
+						route = mobile_appRoutes[i];
+						break;
+					}
+				}
+				
+				if (route) {	// path matched
+					arguments[1] = remoteBase + sap.hybrid.packUrl(url, route);	// pack a remote access URL
+				}
+			}
+
+			originalOpen.apply(this, arguments);
+
+			if (url && (url.indexOf("https://") === 0 || url.indexOf("http://") === 0)) {
+				this.setRequestHeader('Cache-Control', 'no-cache');
+			}
+		};
+	})();
+	
+	sap.hybrid.startApp = function() {
+		var componentName = "com.acc.academia";
+		
+		if (fiori_client_appConfig.fioriURL.indexOf("https://webidetesting-") === 0) {	// Developer Companion
+			sap.hybrid.loadComponent(componentName);
+		} else {	// Packaged app
+			jQuery.getJSON("manifest.json").done(function(appManifest) {
+				if (appManifest["sap.mobile"] && Array.isArray(appManifest["sap.mobile"].stores) 	// offline app
+					&& OData && fiori_client_appConfig && mobile_appRoutes) {
+					var originalRequest = OData.request;
+					
+					OData.request = function(request, success, error, handler, httpClient, metadata) {
+						if (request && request.requestUri) {
+							// enable detection of offline requests
+							var url = request.requestUri;
+							var route = null;
+							for (var i = 0; i < mobile_appRoutes.length; i++) {
+								if (url.indexOf(mobile_appRoutes[i].path) === 0 || ("/" + url).indexOf(mobile_appRoutes[i].path) === 0 ) {
+									route = mobile_appRoutes[i];
+									break;
+								}
+							}
+							if (route) {	// local access path matched
+								arguments[0].requestUri = request.requestUri = fiori_client_appConfig.fioriURL 
+									+ sap.hybrid.packUrl(url, route);	// allow OData requests detection by odata plugin
+							}
+					 
+							// URL params fix from SDK team
+							var myRe = /(sap-\w*)={1}(\w*)/gi;
+							var myArray;
+							while ((myArray = myRe.exec(request.requestUri)) !== null) {
+								arguments[0].headers[myArray[1]] = myArray[2];
+							}
+							arguments[0].requestUri = request.requestUri.replace(/sap-\w*={1}\w*&?/gi, '').replace(/&$/i, '').replace(/\?$/i, '');
+							if (arguments[0].data && arguments[0].data.__batchRequests) {
+								var batchReqs = arguments[0].data.__batchRequests;
+								for (i in batchReqs) {
+									if (batchReqs[i].requestUri) {
+										while ((myArray = myRe.exec(batchReqs[i].requestUri)) !== null) {
+											batchReqs[i].headers[myArray[1]] = myArray[2];
+										}
+										batchReqs[i].requestUri = batchReqs[i].requestUri.replace(/sap-\w*={1}\w*&?/gi, '').replace(/&$/i, '').replace(/\?$/i, '');
+									}
+									if (batchReqs[i].__changeRequests) {
+										var changeReqs = batchReqs[i].__changeRequests;
+										for (j in changeReqs) {
+											if (changeReqs[j].requestUri) {
+												while ((myArray = myRe.exec(changeReqs[j].requestUri)) !== null) {
+													changeReqs[j].headers[myArray[1]] = myArray[2];
+												}
+												changeReqs[j].requestUri = changeReqs[j].requestUri.replace(/sap-\w*={1}\w*&?/gi, '').replace(/&$/i, '').replace(/\?$/i, '');
+											}
+										}
+									}
+								}
+							}
+						}
+						
+						originalRequest.apply(this, arguments);
+					};
+				} // else online packaged app
+
+				sap.hybrid.loadComponent(componentName);
+			}).fail(function(error) {
+				console.error("Failed to load manifest.json");
+			});
+		}
+	};
+	
+	sap.hybrid.bootStrap();
+	</script>
+
+</head>
+
+<body class="sapUiBody" id="content" role="application">
+</body>
+
+</html>

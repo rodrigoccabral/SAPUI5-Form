@@ -1,0 +1,132 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	displayBlock="true">
+	
+		<!-- FUNÇÃO EDITAR USUÁRIO--> 
+	
+	<Dialog id="myDialog2" title="Editar Usuário">
+		<content>
+			
+				<!-- Cnpj-->
+				<Label text="Cnpj" labelFor="cnpjInput"/>
+				<Input
+				id="cnpjInput2"
+				valueLiveUpdate="true" 
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Digite o Cnpj"
+				valueStateText="Name must not be empty. Maximum 10 characters."
+				value="{
+					path : '/cnpj',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 10
+					}
+				}"
+				change= "onChange"/>
+				
+				<!-- Nome da empresa-->
+				<Label text="Nome da empresa" labelFor="nomedaempresaInput"/>
+				<Input
+				id="nomedaempresaInput2"
+				valueLiveUpdate="true" 
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Digite o nome da empresa"
+				valueStateText="Name must not be empty. Maximum 10 characters."
+				value="{
+					path : '/nomedaempresa',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 10
+					}
+				}"
+				change= "onChange"/>
+				
+				<!-- Nome-->
+				<Label text="Nome" labelFor="nomeInput"/>
+				<Input
+				id="nomeInput2"
+				valueLiveUpdate="true" 
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Digite seu nome"
+				valueStateText="Name must not be empty. Maximum 10 characters."
+				value="{
+					path : '/sobrenome',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 10
+					}
+				}"
+				change= "onChange"/>
+				
+				<!-- Sobrenome-->
+				<Label text="Sobrenome" labelFor="nomeInput"/>
+				<Input
+				id="sobrenomeInput2"
+				valueLiveUpdate="true" 
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Digite seu sobrenome"
+				valueStateText="Name must not be empty. Maximum 10 characters."
+				value="{
+					path : '/sobrenome',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 10
+					}
+				}"
+				change= "onChange"/> 
+				
+				<!-- Data de nascimento-->
+				<Label text="Data de Nascimento" labelFor="nascimentoInput"/>
+				<Input
+				id="nascimentoInput2"
+				valueLiveUpdate="true" 
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Digite sua data de nascimento"
+				valueStateText="Name must not be empty. Maximum 10 characters."
+				value="{
+					path : '/datadenascimento',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 10
+					}
+				}"
+				change= "onChange"/>
+				
+				<!-- Profissão-->
+				<Label text="Profissão" labelFor="profissaoInput"/>
+				<Input
+				id="profissaoInput2"
+				valueLiveUpdate="true" 
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Digite sua profissão"
+				valueStateText="Name must not be empty. Maximum 10 characters."
+				value="{
+					path : '/profissao',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 10
+					}
+				}"
+			/>
+		</content>
+		<beginButton>
+			<Button text="OK" press="onMyDialogSelect2" type="Accept" />
+		</beginButton>
+		<endButton>
+			<Button text="Close" press="onPressCloseDialog2" id="btnCancelCodOcor2" type="Reject"/>
+		</endButton>			
+	</Dialog>
+</core:FragmentDefinition>

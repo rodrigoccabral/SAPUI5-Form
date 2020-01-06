@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	displayBlock="true">
+	
+		<!-- FUNÇÃO EDITAR USUÁRIO--> 
+	<Dialog id="myDialogajuda" title="Informe:">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<Text text="Este é um formulários voltado para agências que precisam armazenar informações de profissionais de diferentes empresas." />
+			</VBox>
+		</content>
+			<beginButton>
+				<Button text="OK" press="onMyDialogSelectajuda" type="Accept" />
+			</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

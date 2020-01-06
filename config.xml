@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The {{}} placeholder values, if any, will be updated before the first build. -->
+<!-- Change the App Name, App Version, App Description and Min OS Versions in the 
+     build wizard UI rather than manually modifying their values here. -->
+<!-- Do not change the widget "id" value here. -->
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.sap.webide.xeb3f7fd26dc44805a8eb1bca1f72a4a2" version="1.0">
+    <name>academia</name>
+    <description/>
+    <author href="http://cordova.io">SAP hybrid mobile solution</author>
+    <content src="index.html"/>
+    <access origin="*"/>
+
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <allow-navigation href="*"/>
+
+    <preference name="AutoHideSplashScreen" value="true"/>
+    <preference name="FadeSplashScreen" value="false"/>
+    <preference name="helpUrl" value="https://help.sap.com/viewer/8e5c63b6470a4255861c259f3b2d9b41/Cloud/en-US/ee5b45f82bd845a2a9668e99213bdb3b.html"/>
+
+    <!-- Do not modify the spec attribute values. Cloud build service will replace them with the platform versions of the available build stacks. -->
+    <engine name="ios" spec="*"/>
+    <engine name="android" spec="*"/>
+
+    <platform name="android">
+        <allow-intent href="market:*"/>
+        <allow-intent href="sapauthenticator:*"/>
+
+        <preference name="android-minSdkVersion" value="21"/>
+        <preference name="android-targetSdkVersion" value="26"/>
+        <preference name="xwalkMultipleApk" value="false"/>
+        <preference name="Orientation" value="default"/>
+
+		<!-- Do not modify the content of these icon & splash tags. Instead, upload your images from the cloud build wizard. -->
+        <icon src="res/android/drawable/icon.png"/>
+        <icon density="hdpi" src="res/android/drawable/icon.png"/>
+        <icon density="hdpi" src="res/android/drawable-hdpi/icon.png"/>
+        <icon density="ldpi" src="res/android/drawable-ldpi/icon.png"/>
+        <icon density="mdpi" src="res/android/drawable-mdpi/icon.png"/>
+        <icon density="xhdpi" src="res/android/drawable-xhdpi/icon.png"/>
+        <icon density="xxhdpi" src="res/android/drawable-xxhdpi/icon.png"/>
+        <icon density="xxxhdpi" src="res/android/drawable-xxxhdpi/icon.png"/>
+        <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png"/>
+        <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png"/>
+        <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png"/>
+        <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png"/>
+        <splash density="land-xxhdpi" src="res/screen/android/splash-land-xxhdpi.png"/>
+        <splash density="land-xxxhdpi" src="res/screen/android/splash-land-xxxhdpi.png"/>
+        <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png"/>
+        <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png"/>
+        <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png"/>
+        <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png"/>
+        <splash density="port-xxhdpi" src="res/screen/android/splash-port-xxhdpi.png"/>
+        <splash density="port-xxxhdpi" src="res/screen/android/splash-port-xxxhdpi.png"/>
+    </platform>
+
+    <platform name="ios">
+        <!-- Do not modify the content of these icon & splash tags. Instead, upload your images from the cloud build wizard. -->
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40"/>
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80"/>
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50"/>
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100"/>
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60"/>
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120"/>
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72"/>
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144"/>
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76"/>
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152"/>
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29"/>
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58"/>
+        <icon height="57" src="res/icon/ios/icon.png" width="57"/>
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114"/>
+        <icon height="120" src="res/icon/ios/icon-Small-40@3x.png" width="120"/>
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180"/>
+        <icon height="87" src="res/icon/ios/icon-Small@3x.png" width="87"/>
+        <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
+
+        <splash height="480" src="res/screen/ios/Default~iphone.png" width="320"/>
+        <splash height="960" src="res/screen/ios/Default@2x~iphone.png" width="640"/>
+        <splash height="1024" src="res/screen/ios/Default-Portrait~ipad.png" width="768"/>
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536"/>
+        <splash height="768" src="res/screen/ios/Default-Landscape~ipad.png" width="1024"/>
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048"/>
+        <splash height="1136" src="res/screen/ios/Default-568h@2x~iphone.png" width="640"/>
+        <splash height="1334" src="res/screen/ios/Default-667h@2x.png" width="750"/>
+        <splash height="750" src="res/screen/ios/Default-Landscape@2x~iphone6.png" width="1334"/>
+        <splash height="2208" src="res/screen/ios/Default-Portrait-736h@3x.png" width="1242"/>
+        <splash height="1242" src="res/screen/ios/Default-Landscape-736h@3x.png" width="2208"/>
+        <splash height="2732" src="res/screen/ios/Default-iPadPro-Portrait@2x~ipad.png" width="2048"/>
+        <splash height="2048" src="res/screen/ios/Default-iPadPro-Landscape@2x~ipad.png" width="2732"/>
+
+        <allow-intent href="itms:*"/>
+        <allow-intent href="itms-apps:*"/>
+
+        <preference name="Orientation" value="all"/>
+        <preference name="deployment-target" value="11.0"/>
+        <preference name="StatusBarOverlaysWebView" value="false"/>
+        <preference name="StatusBarStyle" value="default"/>
+        <preference name="StatusBarBackgroundColor" value="#FFFFFF"/>
+
+        <edit-config target="NSFaceIDUsageDescription" file="*-Info.plist" mode="merge">
+            <string>App would like to access Face ID for authentication.</string>
+        </edit-config>
+    </platform>
+
+    <!-- The latest plugin versions available in Cloud Build Service will be installed, -->
+    <!-- i.e. any "spec" attribute value will be ignored. -->
+    <plugin name="kapsel-plugin-apppreferences"/>
+    <plugin name="kapsel-plugin-appupdate"/>
+    <plugin name="kapsel-plugin-authproxy"/>
+    <plugin name="kapsel-plugin-corelibs"/>
+    <plugin name="kapsel-plugin-e2etrace"/>
+    <plugin name="kapsel-plugin-encryptedstorage"/>
+    <plugin name="kapsel-plugin-i18n"/>
+    <plugin name="kapsel-plugin-logger"/>
+    <plugin name="kapsel-plugin-logon"/>
+    <plugin name="kapsel-plugin-settings"/>
+    <plugin name="kapsel-plugin-usage"/>
+    <plugin name="kapsel-plugin-xhook"/>
+	
+    <plugin name="cordova-plugin-device"/>
+    <plugin name="cordova-plugin-dialogs"/>
+    <plugin name="cordova-plugin-file"/>
+    <plugin name="cordova-plugin-network-information"/>
+    <plugin name="cordova-plugin-screen-orientation"/>
+    <plugin name="cordova-plugin-splashscreen"/>
+    <plugin name="cordova-plugin-statusbar"/>
+	
+    <plugin name="kapsel-plugin-attachmentviewer"/>
+    <plugin name="kapsel-plugin-barcodescanner"/>
+    <plugin name="kapsel-plugin-calendar"/>
+    <plugin name="kapsel-plugin-inappbrowser"/>
+    <plugin name="cordova-plugin-camera"/>
+    <plugin name="cordova-plugin-geolocation"/>
+    <plugin name="cordova-plugin-whitelist"/>
+
+</widget>

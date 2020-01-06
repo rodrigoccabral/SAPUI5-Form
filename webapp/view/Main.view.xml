@@ -1,0 +1,152 @@
+<mvc:View controllerName="com.acc.academia.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+				<Panel expandable="true" expanded="false" headerText="Informações da Empresa" width="auto" class="sapUiResponsiveMargin">
+			<Button icon="sap-icon://sys-help" tooltip="Dúvida" press="onPressOpenDialogajuda" type="Transparent"></Button>
+				<content>
+						<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="__form1">
+							<sap.ui.layout.form:formContainers>
+								<sap.ui.layout.form:FormContainer id="__container1">
+									<sap.ui.layout.form:formElements>
+										<sap.ui.layout.form:FormElement label="Nome da Empresa" id="elementoCC">
+											<sap.ui.layout.form:fields>
+												<Input width="50%" id="inputEmp"/>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement label="CNPJ" id="elementoCnpj">
+											<sap.ui.layout.form:fields>
+												<Input width="50%" id="inputCnpj"/>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+									</sap.ui.layout.form:formElements>
+								</sap.ui.layout.form:FormContainer>
+							</sap.ui.layout.form:formContainers>
+							<sap.ui.layout.form:layout>
+								<sap.ui.layout.form:ResponsiveGridLayout id="__layout1"/>
+							</sap.ui.layout.form:layout>
+						</sap.ui.layout.form:Form>
+					</content>
+				</Panel>
+				<Panel expandable="true" expanded="false" headerText="Informações do Funcionário" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="__form2">
+							<sap.ui.layout.form:formContainers>
+								<sap.ui.layout.form:FormContainer id="__container2">
+									<sap.ui.layout.form:formElements>
+										<sap.ui.layout.form:FormElement label="Nome" id="elementoNome">
+											<sap.ui.layout.form:fields>
+												<Input width="50%" id="inNome"/>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement label="Sobrenome" id="elementoSobrenome">
+											<sap.ui.layout.form:fields>
+												<Input width="50%" id="inSobrenome"/>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement label="Data de Nascimento" id="elementoDnascimento">
+											<sap.ui.layout.form:fields>
+												<Input width="50%" id="inDatanasc"/>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement label="Profissão" id="elementoProfissao">
+											<sap.ui.layout.form:fields>
+												<Input width="50%" id="inProfissao"/>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+									</sap.ui.layout.form:formElements>
+								</sap.ui.layout.form:FormContainer>
+							</sap.ui.layout.form:formContainers>
+							<sap.ui.layout.form:layout>
+								<sap.ui.layout.form:ResponsiveGridLayout id="__layout2"/>
+							</sap.ui.layout.form:layout>
+						</sap.ui.layout.form:Form>
+					</content>
+					<Toolbar height="3rem">
+						<Button icon="sap-icon://add-employee" tooltip="Adicionar" type="Emphasized" press="onAdd"/>
+					</Toolbar>
+				</Panel>
+				<Panel expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+						<SearchField width="30%" liveChange="handleStudentSearch" />
+					<headerToolbar>
+						<Toolbar height="3rem">
+							<Title text="Dados Cadastrais"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" tooltip="Excluir" type="Reject" press="onPressOpenDialog3"/>
+							<Button icon="sap-icon://save" tooltip="Salvar Página" type="Accept" press="onPressOpenDialogsave"/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<Table id="packTabela" items="{path:'/data'}" mode="MultiSelect" growing="true" growingThreshold="4" growingScrollToLoad="false">
+							<columns>
+								<Column id="NomeId">
+									<header>
+										<Label text="ID" id="headId"/>
+									</header>
+								</Column>
+									<Column id="Nomeempfun">
+									<header>
+										<Label text="Nome da empresa" id="headempNome"/>
+									</header>
+								</Column>
+									<Column id="Cnpjfun">
+									<header>
+										<Label text="CNPJ" id="headcnpjNome"/>
+									</header>
+								</Column>
+								<Column id="Nomefun">
+									<header>
+										<Label text="Nome" id="headNome"/>
+									</header>
+								</Column>
+								<Column id="Sobrenomefun">
+									<header>
+										<Label text="Sobrenome" id="headSobrenome"/>
+									</header>
+								</Column>
+								<Column id="Datanascimentofun">
+									<header>
+										<Label text="Data de Nascimento" id="headDatanasc"/>
+									</header>
+								</Column>
+								<Column id="Profissaofun">
+									<header>
+										<Label text="Profissão" id="headProfissao"/>
+									</header>
+								</Column>
+									<Column id="colunaeditar">
+									<header>
+										<Label text="" id="colunaEditar"/>
+									</header>
+								</Column>
+							</columns>
+								<items>
+								<ColumnListItem id="itemlist" type="Navigation" press="onPress">
+									<cells>
+										<ObjectIdentifier title="{id}"></ObjectIdentifier>
+										<Text text="{Nomeempfun}" id="Nomeempfuncell"/>
+										<Text text="{Cnpjfun}" id="Cnpjfuncell"/>
+										<Text text="{Nomefun}" id="Nomefuncell"/>
+										<Text text="{Sobrenomefun}" id="Sobrenomefuncell"/>
+										<Text text="{Datanascimentofun}" id="Datanascimentofuncell"/>
+										<Text text="{Profissaofun}" id="Profissaofuncell"/>
+										<Button icon="sap-icon://edit" tooltip="Editar" press="onPressOpenDialog2"></Button>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Panel>
+					<footer>
+						<Toolbar >
+							<content>
+								<Title text="{i18n>tituloToolbar}" textAlign="Center" width="100%"></Title>
+							</content>
+						</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,11 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="public.com.acc.academia.xsodata.projetoacademia">
+			<EntityType Name="ProjetoacademiaType">
+				<Key><PropertyRef Name="COD"/></Key><Property Name="NOMEDAEMPRESA" Type="Edm.String" MaxLength="20"/><Property Name="CNPJ" Type="Edm.Int32"/><Property Name="COD" Type="Edm.Int32" Nullable="false"/><Property Name="NOME" Type="Edm.String" MaxLength="20"/><Property Name="SOBRENOME" Type="Edm.String" MaxLength="20"/><Property Name="DATANASC" Type="Edm.DateTime"/><Property Name="PROFISSAO" Type="Edm.String" MaxLength="255"/></EntityType>
+			<EntityContainer Name="projetoacademia" m:IsDefaultEntityContainer="true"><EntitySet Name="Projetoacademia" EntityType="public.com.acc.academia.xsodata.projetoacademia.ProjetoacademiaType"/></EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

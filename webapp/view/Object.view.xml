@@ -1,0 +1,82 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.acc.academia.controller.Object"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Detalhes do Funcionário" showNavButton="true" navButtonPress="onBack">
+		<content>
+			<VBox width="100%">			
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text="ID: "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="0" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+				
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text="Nome da Empresa: "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="Empresa_exemplo" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+				
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text="Cnpj: "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="123456" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+				
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text="Nome: "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="Nome_exemplo" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+				
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text=" Sobrenome:  "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="Sobrenome_exemplo" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+				
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text="Data de Nascimento: "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="01/01/2000" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+				
+				<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin">
+					<HBox justifyContent="End" width="50%">
+						<Label text="Profissão: "></Label>				
+					</HBox>					
+					<HBox justifyContent="Start" width="50%">
+						<Text text="Profissao_exemplo" width="100%"></Text>
+					</HBox>	
+				</HBox>	
+			</VBox>	
+		</content>
+			<footer>
+				<Toolbar >
+					<content>
+						<Title text="{i18n>tituloToolbar}" textAlign="Center" width="100%"></Title>
+					</content>
+				</Toolbar>
+			</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

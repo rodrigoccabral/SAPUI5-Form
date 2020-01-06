@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	
+<!-- FUNÇÃO SALVAR DOCUMENTO -->
+	<Dialog id="myDialog" title="Gravar">
+		<content>
+				<Label text="Itens salvos com sucesso!" labelFor="nomeInput"/>
+		</content>
+		<beginButton>
+			<Button text="OK" press="onMyDialogSelect" type="Accept" />
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>
+
